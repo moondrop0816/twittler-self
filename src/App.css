@@ -9,50 +9,139 @@ li {
   list-style: none;
 }
 
-#root {
+body {
   display: flex;
-  flex-direction: row;
   justify-content: center;
+  min-height: 100vh;
+}
+
+textarea {
+  overflow: auto;
+  resize: none;
 }
 
 .App {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  width: 70%;
+  min-height: 100%;
+  max-width: 640px;
+  flex: 1 0 0;
 }
 
 .Sidebar {
   border: 1px solid orange;
-  width: 100px;
+  display: flex;
+  flex-direction: column;
 }
 
 .features {
   border: 1px solid olive;
-  width: 500px;
+  width: 564px;
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 0;
+}
+
+.tweets {
+  display: flex;
+  flex-direction: column;
 }
 
 .tweet-avatar {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  overflow: hidden;
+  padding: 0.2rem;
 }
 
 .tweet-avatar img {
-  height: 100%;
+  display: inline-block;
+  width: 50px;
+  border-radius: 100%;
+}
+
+.tweet-form {
+  display: flex;
+  padding: 1rem;
+}
+
+.tweet-input-wrapper {
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 0;
+  margin: 0.5rem;
+}
+
+.tweet-input-wrapper input,
+.tweet-input-wrapper textarea {
+  display: block;
+  width: 100%;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+}
+
+.tweet-input-wrapper textarea {
+  height: 10vh;
+}
+
+.tweet-buttons {
+  display: flex;
+  justify-content: flex-end;
+}
+.tweet-buttons button {
+  padding: 0.5rem;
+  margin-left: 0.5rem;
+}
+
+.tweet-list {
+  flex: 1 0 70vh;
+  overflow-y: scroll;
 }
 
 .tweet-list li {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  padding: 1rem;
+  border-bottom: 1px solid #ccc;
 }
 
-/* .tweet-list .tweet-avatar {
-  flex-basis: 20%;
-} */
+.tweet-list li:last-child {
+  border-bottom: none;
+}
 
 .tweet-list .tweet-content {
-  flex-basis: 80%;
+  flex: 1 0 0;
+}
+
+.tweet-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.tweet-info .tweet-username {
+  display: inline-block;
+  font-weight: bold;
+  margin-left: 0.5rem;
+}
+
+.tweet-info .tweet-date {
+  display: inline-block;
+  margin-left: 0.5rem;
+}
+
+.tweet-msg {
+  padding: 0.5rem;
+}
+
+.mypage .profile {
+  display: flex;
+  padding: 1rem;
+  align-items: center;
+  background-color: orange;
+}
+
+.tweet-info-wrapper {
+  padding: 0.5rem 1rem;
+}
+
+.tweet-info-wrapper .tweet-username {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
 }
