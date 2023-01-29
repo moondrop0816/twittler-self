@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 
-const Tweet = ({ tweet }) => {
+const Tweet = ({ tweet, deleteTweet }) => {
   const parseDate = (createdAt) =>
     new Date(createdAt).toLocaleDateString("ko-KR");
   const [isEdit, setIsEdit] = useState(false); // 트윗 수정상태
@@ -17,6 +17,7 @@ const Tweet = ({ tweet }) => {
         <div className="tweet-info">
           <span className="tweet-username">{tweet.username}</span>
           <span className="tweet-date">{parseDate(tweet.createdAt)}</span>
+          <button onClick={() => deleteTweet(tweet.id)}>delete</button>
         </div>
         {isEdit ? (
           <textarea

@@ -46,6 +46,18 @@ const Tweets = () => {
     }
   };
 
+  const deleteTweet = (id) => {
+    const deleteList = tweetList.filter((tweet) => tweet.id !== id);
+    setTweetList(deleteList);
+    localStorage.setItem("tweetAdded", JSON.stringify(deleteList));
+  };
+
+  // const editTweet = () => {
+  //   setTweetList(
+  //     if ()
+  //   )
+  // }
+
   return (
     <div className="tweets">
       <div className="tweet-form">
@@ -69,7 +81,9 @@ const Tweets = () => {
       </div>
       <ul className="tweet-list">
         {tweetList.map((tweet) => {
-          return <Tweet tweet={tweet} key={tweet.id} />;
+          return (
+            <Tweet tweet={tweet} key={tweet.id} deleteTweet={deleteTweet} />
+          );
         })}
       </ul>
     </div>
