@@ -27,39 +27,42 @@ const Tweets = () => {
   };
 
   const addTweet = () => {
-    const tweet = {
-      id: nextId.current,
-      username: user,
-      picture: `https://randomuser.me/api/portraits/men/98.jpg`,
-      content: msg,
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
-    };
-    setTweetList([tweet, ...tweetList]);
-    setUser("parkhacker");
-    setMsg("");
-    nextId.current += 1;
-    localStorage.setItem("tweetAdded", JSON.stringify([tweet, ...tweetList]));
-    console.log(JSON.parse(localStorage.getItem("tweetAdded")));
+    if (msg === "") {
+      alert("트윗 내용을 적어주세요.");
+    } else {
+      const tweet = {
+        id: nextId.current,
+        username: user,
+        picture: `https://randomuser.me/api/portraits/men/98.jpg`,
+        content: msg,
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
+      };
+      setTweetList([tweet, ...tweetList]);
+      setUser("parkhacker");
+      setMsg("");
+      nextId.current += 1;
+      localStorage.setItem("tweetAdded", JSON.stringify([tweet, ...tweetList]));
+    }
   };
 
   return (
-    <div className="Tweets">
+    <div className="tweets">
       <div className="tweet-form">
         <div className="tweet-avatar">
           <img src="https://randomuser.me/api/portraits/men/98.jpg" />
         </div>
-        <div>
+        <div className="tweet-input-wrapper">
           <div>
             <input type="text" value={user} onChange={handleUser} />
             <textarea value={msg} onChange={handleMsg}></textarea>
           </div>
-          <div>
+          <div className="tweet-buttons">
             <button type="button" onClick={addTweet}>
               send
             </button>
             <button onClick={() => localStorage.clear("tweetAdded")}>
-              clear
+              localstorage clear
             </button>
           </div>
         </div>
