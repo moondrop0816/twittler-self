@@ -1,5 +1,26 @@
+import Tweet from "../Components/Tweet";
+import dummyTweets from "../static/dummyData";
+
 const MyPage = () => {
-  return <div>mypage</div>;
+  const filtered = dummyTweets.filter((el) => el.username === "parkhacker");
+  return (
+    <div className="mypage">
+      <div className="profile">
+        <div className="tweet-avatar">
+          <img src="https://randomuser.me/api/portraits/men/98.jpg" />
+        </div>
+        <div className="tweet-info-wrapper">
+          <div className="tweet-username">parkhacker</div>
+          <div className="tweet-follow">20 follower 150 follwing</div>
+        </div>
+      </div>
+      <ul className="tweet-list">
+        {filtered.map((tweet) => (
+          <Tweet tweet={tweet} key={tweet.id} />
+        ))}
+      </ul>
+    </div>
+  );
 };
 
 export default MyPage;
