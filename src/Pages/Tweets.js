@@ -6,7 +6,7 @@ const Tweets = () => {
   const [tweetList, setTweetList] = useState([]);
   const [user, setUser] = useState("parkhacker");
   const [msg, setMsg] = useState("");
-  const nextId = useRef(6);
+  const nextId = useRef();
 
   const getTweetList = JSON.parse(localStorage.getItem("tweetAdded"));
   useEffect(() => {
@@ -15,6 +15,7 @@ const Tweets = () => {
       nextId.current = getTweetList[0].id + 1;
     } else {
       setTweetList(dummyTweets);
+      nextId.current = 6;
     }
   }, []);
 
