@@ -36,7 +36,7 @@ textarea {
 }
 
 .features {
-  border: 1px solid olive;
+  border-right: 1px solid orange;
   width: 564px;
   display: flex;
   flex-direction: column;
@@ -61,6 +61,7 @@ textarea {
 .tweet-form {
   display: flex;
   padding: 1rem;
+  background-color: orange;
 }
 
 .tweet-input-wrapper {
@@ -89,6 +90,11 @@ textarea {
 .tweet-buttons button {
   padding: 0.5rem;
   margin-left: 0.5rem;
+  font-weight: bold;
+  background-color: black;
+  color: #fff;
+  border: none;
+  cursor: pointer;
 }
 
 .tweet-list {
