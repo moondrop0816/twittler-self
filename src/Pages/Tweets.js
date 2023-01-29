@@ -53,11 +53,15 @@ const Tweets = () => {
     localStorage.setItem("tweetAdded", JSON.stringify(deleteList));
   };
 
-  // const editTweet = () => {
-  //   setTweetList(
-  //     if ()
-  //   )
-  // }
+  const updateTweet = (id, content) => {
+    const updateList = tweetList.map((tweet) =>
+      tweet.id === id
+        ? { ...tweet, content, updatedAt: new Date().toISOString() }
+        : tweet
+    );
+    setTweetList(updateList);
+    localStorage.setItem("tweetAdded", JSON.stringify(updateList));
+  };
 
   return (
     <div className="tweets">
@@ -83,7 +87,12 @@ const Tweets = () => {
       <ul className="tweet-list">
         {tweetList.map((tweet) => {
           return (
-            <Tweet tweet={tweet} key={tweet.id} deleteTweet={deleteTweet} />
+            <Tweet
+              tweet={tweet}
+              key={tweet.id}
+              deleteTweet={deleteTweet}
+              updateTweet={updateTweet}
+            />
           );
         })}
       </ul>

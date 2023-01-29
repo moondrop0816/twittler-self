@@ -1,12 +1,22 @@
 import { useState, useRef } from "react";
 
-const Tweet = ({ tweet, deleteTweet }) => {
+const Tweet = ({ tweet, deleteTweet, updateTweet }) => {
   const parseDate = (createdAt) =>
     new Date(createdAt).toLocaleDateString("ko-KR");
   const [isEdit, setIsEdit] = useState(false); // 트윗 수정상태
-  const textRef = useRef();
+  const [updateMsg, setUpdateMsg] = useState(tweet.content);
+  const textareaRef = useRef();
+
   const onEdit = () => {
-    setIsEdit(!isEdit);
+    setIsEdit(true);
+  };
+  const handleUpdateMsg = (event) => {
+    setUpdateMsg(event.target.value);
+    textareaRef.current.style.height = textareaRef.current.scrollHeight + "px";
+  };
+  const onUpdate = (id, content) => {
+    setIsEdit(false);
+    updateTweet(id, content);
   };
   return (
     <li>
@@ -20,14 +30,18 @@ const Tweet = ({ tweet, deleteTweet }) => {
           <button onClick={() => deleteTweet(tweet.id)}>delete</button>
         </div>
         {isEdit ? (
-          <textarea
-            className="tweet-msg-edit"
-            value={tweet.content}
-            style={{ height: textRef.current.offsetHeight + "px" }}
-            onClick={onEdit}
-          ></textarea>
+          <>
+            <textarea
+              className="tweet-msg-edit"
+              rows="7"
+              value={updateMsg}
+              ref={textareaRef}
+              onChange={handleUpdateMsg}
+            ></textarea>
+            <button onClick={() => onUpdate(tweet.id, updateMsg)}>edit</button>
+          </>
         ) : (
-          <div className="tweet-msg" ref={textRef} onClick={onEdit}>
+          <div className="tweet-msg" onClick={onEdit}>
             {tweet.content}
           </div>
         )}
