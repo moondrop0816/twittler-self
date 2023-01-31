@@ -4,9 +4,9 @@ import dummyTweets from "../static/dummyData";
 
 const Tweets = () => {
   const [tweetList, setTweetList] = useState([]);
-  const [user, setUser] = useState("parkhacker");
+  const [user, setUser] = useState("harry00700");
   const [msg, setMsg] = useState("");
-  const nextId = useRef();
+  const nextId = useRef(6);
 
   const getTweetList = JSON.parse(localStorage.getItem("tweetAdded"));
   useEffect(() => {
@@ -34,13 +34,13 @@ const Tweets = () => {
       const tweet = {
         id: nextId.current,
         username: user,
-        picture: `https://randomuser.me/api/portraits/men/98.jpg`,
+        picture: `https://randomuser.me/api/portraits/women/50.jpg`,
         content: msg,
         createdAt: new Date().toISOString(),
         updatedAt: new Date().toISOString(),
       };
       setTweetList([tweet, ...tweetList]);
-      setUser("parkhacker");
+      setUser("harry00700");
       setMsg("");
       nextId.current += 1;
       localStorage.setItem("tweetAdded", JSON.stringify([tweet, ...tweetList]));
@@ -67,7 +67,7 @@ const Tweets = () => {
     <div className="tweets">
       <div className="tweet-form">
         <div className="tweet-avatar">
-          <img src="https://randomuser.me/api/portraits/men/98.jpg" />
+          <img src="https://randomuser.me/api/portraits/women/50.jpg" />
         </div>
         <div className="tweet-input-wrapper">
           <div>

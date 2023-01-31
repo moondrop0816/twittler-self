@@ -18,7 +18,7 @@ const dummyTweets = [
   {
     id: 2,
     username: "harry00700",
-    picture: `https://randomuser.me/api/portraits/women/98.jpg`,
+    picture: `https://randomuser.me/api/portraits/women/50.jpg`,
     content:
       "Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius.\n\nInteger ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.\n\nNam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.",
     createdAt: "2022-02-25T16:17:47.000Z",
